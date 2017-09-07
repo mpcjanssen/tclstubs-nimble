@@ -225,6 +225,7 @@ set f [open "tclstubs.nim" w]
 
 
 puts $f {include "private/tcltypes.inc"}  
+puts $f {include "private/link.inc"}  
 
 puts $f "\n\n# Generated proc vars"
 puts $f "#####################"

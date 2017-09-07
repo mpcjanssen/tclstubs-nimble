@@ -1,4 +1,5 @@
 include "private/tcltypes.inc"
+include "private/link.inc"
 
 
 # Generated proc vars
@@ -1277,13 +1278,6 @@ type TclStubs = object
 
 # Generated init proc
 ####################
-
-import "ospaths"
-proc stubLibName(): string =
-  joinPath(parentDir(currentSourcePath()), "libtclstub.win.a")
-
-
-{.passL: stubLibName().}
 
 var tclStubsPtr{.importc: "tclStubsPtr".} : ptr TclStubs 
 proc tclInitStubs(interp: PInterp, version: cstring, exact: cint): cstring {.cdecl, importc: "Tcl_InitStubs".}
