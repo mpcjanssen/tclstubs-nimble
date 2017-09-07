@@ -1,12 +1,12 @@
 {.deadCodeElim: on.}
 
 const 
-  TCL_DESTROYED* = 0xDEADDEAD
-  TCL_OK* = 0
-  TCL_ERROR* = 1
-  TCL_RETURN* = 2
-  TCL_BREAK* = 3
-  TCL_CONTINUE* = 4
+  DESTROYED* = 0xDEADDEAD
+  OK* = 0
+  ERROR* = 1
+  RETURN* = 2
+  BREAK* = 3
+  CONTINUE* = 4
   RESULT_SIZE* = 200
   MAX_ARGV* = 0x00007FFF
   VERSION_MAJOR* = 0
@@ -44,11 +44,11 @@ const
   IDLE_EVENTS* = 1 shl 5  # WAS 0x10 ???? *
   ALL_EVENTS* = not DONT_WAIT
   VOLATILE* = 1
-  TCL_STATIC* = 0
+  STATIC* = 0
   DYNAMIC* = 3            # Channel
-  TCL_STDIN* = 1 shl 1
-  TCL_STDOUT* = 1 shl 2
-  TCL_STDERR* = 1 shl 3
+  STDIN* = 1 shl 1
+  STDOUT* = 1 shl 2
+  STDERR* = 1 shl 3
   ENFORCE_MODE* = 1 shl 4
   READABLE* = 1 shl 1
   WRITABLE* = 1 shl 2

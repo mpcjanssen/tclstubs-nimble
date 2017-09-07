@@ -7,17 +7,20 @@ Install the package with `nimble install`
 Put the code below in `tcluuid.nim` and compile as DLL with ` nim c --app:lib -d:release tcluuid.nim `
 
 ```
-import tclstubs
 import uuids
+from tclstubs as Tcl import nil
 
-proc Uuids_Cmd(clientData: PClientData, interp: PInterp, objc: cint, objv: PPObj): cint =
-  SetObjResult(interp, NewStringObj($genUUID(),-1))
-  return TCL_OK
+proc Uuids_Cmd(clientData: Tcl.PClientData, interp: Tcl.PInterp, objc: cint, objv: Tcl.PPObj): cint =
+  Tcl.SetObjResult(interp, Tcl.NewStringObj($genUUID(),-1))
+  return Tcl.OK
 
 
-proc Uuids_Init(interp: PInterp): cint {.exportc,dynlib.} =
-  echo InitStubs(interp, "8.5",0)
-  echo PkgProvideEx(interp, "nuuid","0.1", nil)
-  discard CreateObjCommand(interp, "uuid", Uuids_Cmd, nil, nil) 
-  return TCL_OK
+proc Uuids_Init(interp: Tcl.PInterp): cint {.exportc,dynlib.} =
+  echo Tcl.InitStubs(interp, "8.5",0)
+  echo Tcl.PkgProvideEx(interp, "nuuid","0.1", nil)
+  if Tcl.CreateObjCommand(interp, "uuid", Uuids_Cmd, nil, nil)!=nil:
+    return Tcl.OK
+  else:
+    return Tcl.ERROR
+
 ```
