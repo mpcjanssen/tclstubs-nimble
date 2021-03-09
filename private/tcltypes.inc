@@ -442,7 +442,7 @@ type
 
   TChannelProc* = proc (clientData: TClientData, mask: int){.cdecl.}
   PObj* = ptr TObj
-  PPObj* = openarray[PObj]
+  PPObj* = ptr UncheckedArray[PObj]
   TObj*{.final.} = object 
     refCount*: int            # ...
   
