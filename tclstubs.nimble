@@ -8,3 +8,5 @@ license     = "MIT"
 # Deps
 
 requires "nim >= 0.10.0"
+
+installDirs = @["private"]
