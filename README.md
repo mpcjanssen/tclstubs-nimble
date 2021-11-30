@@ -11,7 +11,7 @@ import uuids
 from tclstubs as Tcl import nil
 
 proc Uuids_Cmd(clientData: Tcl.PClientData, interp: Tcl.PInterp, objc: cint, objv: Tcl.PPObj): cint =
-  Tcl.SetObjResult(interp, Tcl.NewStringObj($genUUID(),-1))
+  Tcl.SetObjResult(interp, Tcl.NewStringObj(cstring($genUUID()),-1))
   return Tcl.OK
 
 

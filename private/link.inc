@@ -1,4 +1,4 @@
-import "ospaths"
+import "os.nim"
 proc stubLibName(): string =
   when defined(windows):
     joinPath(parentDir(currentSourcePath()), "libtclstub.win.a")
